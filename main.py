@@ -14,4 +14,7 @@ if __name__ == '__main__':
     nonebot.load_plugins(
         path.join(path.dirname(__file__), 'extensions', 'selector'), 'extensions.selector'
     )
+    nonebot.load_plugins(
+        path.join(path.dirname(__file__), 'extensions', 'fortune'), 'extensions.fortune'
+    )
     nonebot.run()
