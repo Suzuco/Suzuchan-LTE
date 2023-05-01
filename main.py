@@ -17,4 +17,7 @@ if __name__ == '__main__':
     nonebot.load_plugins(
         path.join(path.dirname(__file__), 'extensions', 'fortune'), 'extensions.fortune'
     )
+    nonebot.load_plugins(
+        path.join(path.dirname(__file__), 'extensions', 'chatgpt'), 'extensions.chatgpt'
+    )
     nonebot.run()
