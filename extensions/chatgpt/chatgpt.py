@@ -12,4 +12,4 @@ async def fortune(session: CommandSession):
         url="https://suzuco.moe:13450/api/neko-gpt/",
         data=json.dumps({"rq": ss}))
 
-    return await session.send(f"""{res.text}""", at_sender=True)
+    return await session.send(f"""{res}""", at_sender=True)
