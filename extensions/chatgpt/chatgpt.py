@@ -8,7 +8,7 @@ from nonebot import on_command, CommandSession
 async def fortune(session: CommandSession):
     ss = session.current_arg_text.strip()
 
-    res = await requests.post(
+    res = requests.post(
         url="https://suzuco.moe:13450/api/neko-gpt/",
         data=json.dumps({"rq": ss}))
 
