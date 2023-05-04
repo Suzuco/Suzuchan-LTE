@@ -4,7 +4,7 @@ import json
 from nonebot import on_command, CommandSession
 
 
-@on_command("gpt", aliases=["小铃子", "小铃同学"], only_to_me=False)
+@on_command("gpt", aliases=["小铃同学"], only_to_me=False)
 async def fortune(session: CommandSession):
     ss = session.current_arg_text.strip()
 
