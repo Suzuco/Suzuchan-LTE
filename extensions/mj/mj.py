@@ -15,7 +15,7 @@ async def mj(session: CommandSession):
     rgen = random.Random()
     deck = rgen.sample(range(136), 15)
     hand = sorted(deck[1:-1])
-    dora = tiles[deck[0] // 4]
+    dora = chr(tiles[deck[0] // 4]) + "\U0001F02B"*4
     hand = "".join([chr(tiles[t // 4]) for t in hand])
-    tumo = tiles[deck[14] // 4]
+    tumo = chr(tiles[deck[14] // 4])
     return await session.send(f"\n宝牌 {dora}\n{hand} 自摸{tumo}", at_sender=True)
