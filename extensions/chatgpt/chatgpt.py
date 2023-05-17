@@ -13,12 +13,14 @@ async def gpt(session: CommandSession):
         user = ev["sender"]["card"] or ev["sender"]["nickname"]
         # source = await session.bot.get_group_info(group_id=ev["group_id"])
         # source = source["group_name"]
+        source = ev["group_id"]
     else:
         user = ev["sender"]["nickname"]
         # source = ""
+        source = 0
 
     res = requests.post(
         url="https://suzuco.moe:13450/api/neko-gpt/",
-        data=json.dumps({"rq": ss, "by": user}))  # , "from": source}))
+        data=json.dumps({"rq": ss, "by": user, "from": source}))  # , "from": source}))
 
     return await session.send(f"""{res.text}""", at_sender=True)
