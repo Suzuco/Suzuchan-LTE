@@ -21,14 +21,18 @@ def api(session: CommandSession, channel: str):
     else:
         user = ev["sender"]["nickname"]
         source = 0
-    resp = requests.post(
-        url="https://suzuco.moe:13450/api/neko-gpt/",
-        data=json.dumps({"rq": ss, "by": user, "from": source,
-                         "history": json.dumps(history[gid]) if len(history[gid]) != 0 else ""}))
 
-    history[gid].append((ss, resp.text))
-    if len(history[gid]) > MEMORY_RETAIN:
-        history[gid] = history[gid][-MEMORY_RETAIN:]
+    try:
+        resp = requests.post(
+            url="https://suzuco.moe:13450/api/neko-gpt/",
+            data=json.dumps({"rq": ss, "by": user, "from": source,
+                             "history": json.dumps(history[gid]) if len(history[gid]) != 0 else ""}))
+
+        history[gid].append((ss, resp.text))
+        if len(history[gid]) > MEMORY_RETAIN:
+            history[gid] = history[gid][-MEMORY_RETAIN:]
+    except Exception:
+        resp = {"text": "（节能中）"}
     return resp
 
 
